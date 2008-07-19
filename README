@@ -4,7 +4,7 @@ has_comments
 Instalation
 -----------
 
-1) Install the plugin with `script/plugin install http://svn.simplesideias.com.br/general/rails/plugins/has_comments`
+1) Install the plugin with `script/plugin install git://github.com/fnando/has_comments.git`
 2) Generate a migration with `script/generate migration create_comments` and add the following code:
 
 class CreateComments < ActiveRecord::Migration
