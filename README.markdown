@@ -52,7 +52,7 @@ Usage
 	photo.find_users_that_commented # => [<user>]
 	photo.find_comments_by_user(user) # => [<comment>]
 
-NOTE: You should have a User model. You should also have a comments_count 
+NOTE: You should have a User model. You should also have a `comments_count`
 column on your model. **Otherwise, this won't work!**
 
 Copyright (c) 2008 Nando Vieira, released under the MIT license
