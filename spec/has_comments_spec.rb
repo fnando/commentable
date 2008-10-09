@@ -111,4 +111,14 @@ describe "has_comments" do
     
     @beer.find_comments_by_user(@user).should == [comment, another_comment]
   end
+  
+  it "should accept user as object" do
+    comment = @beer.comment(:user => @user, :comment => "Great!")
+    comment.should be_valid
+  end
+  
+  it "should accept user as integer" do
+    comment = @beer.comment(:user_id => @user.id, :comment => "Great!")
+    comment.should be_valid
+  end
 end
