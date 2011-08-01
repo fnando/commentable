@@ -10,7 +10,7 @@ Commentable is tightly coupled to an User model. If you don't have it, there's n
 
 == Usage
 
-First, you'll have to create the comments table. Run `rails generate migration create_comments` and add the following code:
+First, you'll have to create the comments table. Run <tt>rails generate migration create_comments</tt> and add the following code:
 
   class CreateComments < ActiveRecord::Migration
     def self.up
@@ -30,15 +30,15 @@ First, you'll have to create the comments table. Run `rails generate migration c
     end
   end
 
-Run `rake db:migrate` to apply this new migration.
+Run <tt>rake db:migrate</tt> to apply this new migration.
 
-Now, add the `commentable` macro to all models that can be commented.
+Now, add the <tt>commentable</tt> macro to all models that can be commented.
 
   class Task < ActiveRecord::Base
     commentable
   end
 
-This will create an association called `comments`. You can now create comments like any ActiveRecord model.
+This will create an association called <tt>comments</tt>. You can now create comments like any ActiveRecord model.
 
   comment = @task.comments.create(:body => "Awesome job!", :user => @user)
 
@@ -46,13 +46,13 @@ There's a shortcut for that.
 
   comment = @task.add_comment(:body => "Awesome job!", :user => @user)
 
-You can have formatted comments. This is specially useful if you want to provide Markdown support, for instance. Just use the `:format` option passing any variable that responds to the `call` method. The block's return will be used as the `formatted_body` attribute.
+You can have formatted comments. This is specially useful if you want to provide Markdown support, for instance. Just use the <tt>:format</tt> option passing any variable that responds to the <tt>call</tt> method. The block's return will be used as the <tt>formatted_body</tt> attribute.
 
   class Task < ActiveRecord::Base
     commentable :format => proc {|comment| Redcarpet.new(comment.body.to_s).to_html}
   end
 
-<b>Final note:</b> remember to add a `comments_count` column to every single model that will be commentable. This is required by the Comment model.
+<b>Final note:</b> remember to add a <tt>comments_count</tt> column to every single model that will be commentable. This is required by the Comment model.
 
 == Maintainer
 
