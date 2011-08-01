@@ -1,22 +1,26 @@
 ActiveRecord::Schema.define(:version => 0) do
-  create_table :users do |t|
-    t.string :name
-  end
-  
-  create_table :beers do |t|
-    t.string :name
-    t.integer :comments_count, :default => 0, :null => false
-  end
-  
-  create_table :donuts do |t|
-    t.string :flavor
-    t.integer :comments_count, :default => 0, :null => false
-  end
-  
   create_table :comments do |t|
-    t.text :comment
+    t.text :body, :formatted_body
     t.references :commentable, :polymorphic => true
     t.references :user
     t.timestamps
+  end
+
+  add_index :comments, [:commentable_id, :commentable_type], :name => "index_on_commentable"
+  add_index :comments, [:commentable_id, :commentable_type, :user_id], :name => "index_on_commentable_and_user"
+
+  create_table :projects do |t|
+    t.integer :comments_count, :null => false, :default => 0
+  end
+
+  create_table :tasks do |t|
+    t.integer :comments_count, :null => false, :default => 0
+  end
+
+  create_table :lists do |t|
+    t.integer :comments_count, :null => false, :default => 0
+  end
+
+  create_table :users do |t|
   end
 end
