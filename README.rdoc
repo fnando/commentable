@@ -40,7 +40,7 @@ Now, add the `commentable` macro to all models that can be commented.
 
 This will create an association called `comments`. You can now create comments like any ActiveRecord model.
 
-	comment = @task.comments.create(:body => "Awesome job!", :user => @user)
+  comment = @task.comments.create(:body => "Awesome job!", :user => @user)
 
 There's a shortcut for that.
 
