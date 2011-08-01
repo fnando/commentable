@@ -46,7 +46,7 @@ There's a shortcut for that.
 
   comment = @task.add_comment(:body => "Awesome job!", :user => @user)
 
-You can have formatted comments. This is specially useful if you want to provide Markdown support, for instance. Just use the <tt>:format</tt> option passing any variable that responds to the <tt>call</tt> method. The block's return will be used as the <tt>formatted_body</tt> attribute.
+You can have formatted comments. This is specially useful if you want to provide Markdown support, for instance. Just use the <tt>:format</tt> option passing any object that responds to the <tt>call</tt> method. The block's return will be used as the <tt>formatted_body</tt> attribute.
 
   class Task < ActiveRecord::Base
     commentable :format => proc {|comment| Redcarpet.new(comment.body.to_s).to_html}
